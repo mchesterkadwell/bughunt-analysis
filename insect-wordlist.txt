@@ -1,0 +1,15 @@
+lacewing
+ladybird
+beetle
+fly
+bee
+moth
+butterfly
+bumblebee
+dragonfly
+ant
+aphid
+wasp
+bug
+hoverfly
+woodlouse
