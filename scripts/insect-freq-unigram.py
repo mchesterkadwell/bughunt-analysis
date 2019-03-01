@@ -18,7 +18,6 @@ print(f'Started at {now}...')
 
 # Create list of files to be read
 data_path = os.path.join('corpora', 'bughunt', '2-clean-by-decade')
-# data_path = os.path.join('corpora', 'msbooks')
 files = [os.path.join(root, filename) for root, _, files in os.walk(data_path) for filename in files]
 
 # Create a corpus reader with all the files
@@ -28,7 +27,7 @@ reader = PlaintextCorpusReader('.', files)
 english_stops = set(stopwords.words('english'))
 
 # Load the insect wordlist of stems
-insect_words = WordListCorpusReader('.', ['insect-wordstems.txt'])
+insect_words = WordListCorpusReader('.', ['wordlists/insect-wordstems.txt'])
 
 # Set up a translation table for punctuation to the empty string
 table = str.maketrans('', '', string.punctuation)
@@ -55,12 +54,12 @@ for file in files:
     # Remove stopwords from the tokens
     words_nostops = [word for word in words if word not in english_stops]
 
-    # # Stem the words
+    # Stem the words
     porter = PorterStemmer()
     stems = [porter.stem(word) for word in words_nostops]
 
     # Create a frequency distribution from the samples (words)
-    freqdist = FreqDist(stems)
+    freqdist = FreqDist(words_nostops)
 
     # Create a dict with the frequency of the insect words only
     insect_freq = {word: freqdist.freq(word) for word in insect_words.words()}
@@ -85,12 +84,10 @@ for insect in insect_words.words():
     df.plot(kind='line', x='year', y=insect, ax=ax)
 plt.xlabel('year')
 plt.ylabel('frequency of insect word')
-plt.savefig('insect-figs/bughunt/insect-stem-freq-unigram.png')
-# plt.savefig('insect-figs/msbooks/insect-freq-unigram.png')
+plt.savefig('output/figs/bughunt/insect-freq-unigram.png')
 
 # Export the results to CSV
-df.to_csv('insect-data/bughunt/insect-stem-freq-unigram.csv', index=False)
-# df.to_csv('insect-data/msbooks/insect-freq-unigram.csv', index=False)
+df.to_csv('output/csv/bughunt/insect-freq-unigram.csv', index=False)
 
 finish = time()
 timing = round(finish - start)
