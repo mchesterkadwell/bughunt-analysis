@@ -59,7 +59,7 @@ for file in files:
     stems = [porter.stem(word) for word in words_nostops]
 
     # Create a frequency distribution from the samples (words)
-    freqdist = FreqDist(words_nostops)
+    freqdist = FreqDist(stems)
 
     # Create a dict with the frequency of the insect words only
     insect_freq = {word: freqdist.freq(word) for word in insect_words.words()}
