@@ -43,7 +43,7 @@ would normally on your machine. (If you are not familiar with Jupyter notebooks
 yet then just use the Binder button to start with.)
 
 There are 3 notebooks under the [notebooks](notebooks) folder:
-* [1-intro-to-strings.ipynb](notebooks/1-intro-to-strings.py) - a generic 
+* [1-intro-to-strings.ipynb](notebooks/1-intro-to-strings.ipynb) - a generic 
 introduction to Jupyter notebooks and basic string functions in Python.
 * [2-text-processing-corpus.ipynb](notebooks/2-text-processing-corpus.ipynb) - 
 a walk through of the principles behind the first part of the script
@@ -67,7 +67,7 @@ on [virtual environments](https://realpython.com/python-virtual-environments-a-p
 You will also need to download the corpus of stopwords and the punkt tokenizer 
 from `nltk_data`. See the official documentation: [Installing NLTK Data](https://www.nltk.org/data.html)
 
-Run the scripts in this order:
+Run the scripts in this order (with the root of the repo as the working directory):
 * [files-by-decade.py](scripts/files-by-decade.py) - takes the cleaned corpus 
 and splits it into files arranged by decade of publication.
 * [insect-freq-unigram.py](scripts/insect-freq-unigram.py) - tokenises the 
