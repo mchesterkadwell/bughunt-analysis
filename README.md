@@ -29,14 +29,45 @@ The main libraries used in this repository are:
 
 ##Getting started
 
+###Jupyter notebooks
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mchesterkadwell/bughunt-analysis/master)
 
 The easiest way to run the Jupyter notebooks in this repository is to click on 
 the Binder button above. This will launch a virtual environment in your 
 browser where you can open and run the notebooks without installing anything.
 
-To run the analysis scripts themselves, clone the repository and then run the 
-scripts in this order:
+If you want to run the notebooks locally, follow the instructions for cloning 
+and installing requirements as in the section below, and then run the notebooks in the way you 
+would normally on your machine. (If you are not familiar with Jupyter notebooks 
+yet then just use the Binder button to start with.)
+
+There are 3 notebooks under the [notebooks](notebooks) folder:
+* [1-intro-to-strings.ipynb](notebooks/1-intro-to-strings.py) - a generic 
+introduction to Jupyter notebooks and basic string functions in Python.
+* [2-text-processing-corpus.ipynb](notebooks/2-text-processing-corpus.ipynb) - 
+a walk through of the principles behind the first part of the script
+ [insect-freq-unigram.py](scripts/insect-freq-unigram.py), 
+from tokenising the files to generating the frequency distribution.
+* [3-visualising-data.ipynb](notebooks/3-visualising-data.ipynb) - a walk 
+through of the principles behind the second part of [insect-freq-unigram.py](scripts/insect-freq-unigram.py) 
+whereby the basic graph is plotted.
+
+###Analysis scripts
+
+To run the analysis scripts themselves, clone the repository and install the 
+required libraries from `requirements.txt`.
+
+`$ pip install -r requirements.txt`
+
+It is strongly recommended that you 
+do so in a `venv` virtual environment. (RealPython has an excellent tutorial 
+on [virtual environments](https://realpython.com/python-virtual-environments-a-primer/).)
+
+You will also need to download the corpus of stopwords and the punkt tokenizer 
+from `nltk_data`. See the official documentation: [Installing NLTK Data](https://www.nltk.org/data.html)
+
+Run the scripts in this order:
 * [files-by-decade.py](scripts/files-by-decade.py) - takes the cleaned corpus 
 and splits it into files arranged by decade of publication.
 * [insect-freq-unigram.py](scripts/insect-freq-unigram.py) - tokenises the 
