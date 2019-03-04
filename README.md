@@ -1,6 +1,6 @@
-#Bughunt!
+# Bughunt!
 
-##Introduction
+## Introduction
 
 This repository contains scripts and Jupyter notebooks for *Bughunt! 2019*, a 
 guided project undertaken by Faculty of Education students as part of the 
@@ -13,7 +13,7 @@ Participants collated and manually cleaned a corpus of out-of-copyright books
 from a number of sources, which may be found in the [1-initial-manual-clean](corpora/bughunt/1-initial-manual-clean)
 folder.
 
-##Code details
+## Code details
 
 The aim of the code in this repository is to show basic text mining techniques 
 to participants who are complete beginners to both text mining and coding. 
@@ -27,9 +27,9 @@ The main libraries used in this repository are:
 * Pandas
 * Matplotlib
 
-##Getting started
+## Getting started
 
-###Jupyter notebooks
+### Jupyter notebooks
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mchesterkadwell/bughunt-analysis/master)
 
@@ -53,7 +53,7 @@ from tokenising the files to generating the frequency distribution.
 through of the principles behind the second part of [insect-freq-unigram.py](scripts/insect-freq-unigram.py) 
 whereby the basic graph is plotted.
 
-###Analysis scripts
+### Analysis scripts
 
 To run the analysis scripts themselves, clone the repository and install the 
 required libraries from `requirements.txt`.
