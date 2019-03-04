@@ -23,14 +23,15 @@ files = [os.path.join(root, filename) for root, _, files in os.walk(data_path) f
 # Create a corpus reader with all the files
 reader = PlaintextCorpusReader('.', files)
 
-# Get a list of English stopwords
+# Set up a translation table for punctuation to the empty string
+table = str.maketrans('', '', string.punctuation)
+
+# Get a list of English stopwords without punctuation
 english_stops = set(stopwords.words('english'))
+english_stops_nopunct = {stopword.translate(table) for stopword in english_stops}
 
 # Load the insect wordlist of stems
 insect_words = WordListCorpusReader('.', ['wordlists/insect-wordstems.txt'])
-
-# Set up a translation table for punctuation to the empty string
-table = str.maketrans('', '', string.punctuation)
 
 # A list to hold the frequency data
 freq_data = []
@@ -52,7 +53,7 @@ for file in files:
     words = [word for word in tokens_nopunct if word.isalpha()]
 
     # Remove stopwords from the tokens
-    words_nostops = [word for word in words if word not in english_stops]
+    words_nostops = [word for word in words if word not in english_stops_nopunct]
 
     # Stem the words
     porter = PorterStemmer()
@@ -84,10 +85,10 @@ for insect in insect_words.words():
     df.plot(kind='line', x='year', y=insect, ax=ax)
 plt.xlabel('year')
 plt.ylabel('frequency of insect word')
-plt.savefig('output/figs/bughunt/insect-freq-unigram.png')
+plt.savefig('output/figs/bughunt/insect-stem-freq-unigram.png')
 
 # Export the results to CSV
-df.to_csv('output/csv/bughunt/insect-freq-unigram.csv', index=False)
+df.to_csv('output/csv/bughunt/insect-stem-freq-unigram.csv', index=False)
 
 finish = time()
 timing = round(finish - start)
